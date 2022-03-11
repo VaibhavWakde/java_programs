@@ -1,0 +1,162 @@
+                                            Interface in java
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+
+
+
+- Interface is a blueprint of class.
+
+- It has static, constant and abstract methods.
+
+- Interface in java is a mechanism to achieve 100% abstraction.
+
+- it has only abstract methods, not method body.
+
+- It is used to achieve 100% abstraction and multiple inheritance in java ( java doesn't support multiple inheritance
+  becoz complier confuse which parent class takes just becoz of interface we can use multiple inheritance )
+
+- Interface have abstract methods and variables. It cannot have a method body.
+
+- Interface also represent a IS-a-relationship.*******
+
+- It cannot be instanciated just like a abstract class
+
+- In java 8, we have a default and static methods in a interface.
+- In java 9, we have private methods in interface.
+
+********************************** Why use java Interface ? ************************************************
+
+- It is used to achieve 100% abstraction.
+- By using interface, we can use functionality of multiple inheritance.
+- It is used to achieve loose coupling.
+
+******************** How to declare ? ****************************
+
+- we can declare with the use of interface keyword.
+
+- It provides 100% abstraction, means all the method in an interface declared with empty body.
+
+- all the methods are public and abstract by default.
+- all the fields (variables) are public, static and final (implicitly).
+
+- the class that implements an interface must compulsorily have to implements all the methods in interface.
+
+    syntax :
+                interface <interface_name>{
+                  //methods; (implicitly abstract & public)
+                  //fields (variables); (public, static & final implicitly)
+                }
+
+********************** In java 8 interface Improvements *************************************************
+
+- Interface can have default and static methods.
+
+- In interface, method have body but it should be default then we impliment body to the method.
+
+********************** Internal addition by the compiler (implicitly) ************************************
+
+- java compiler (JVM) adds public and abstract keyword before the interface methods.
+- and it adds public, static and final keywords before the fields( variables or data members)
+
+         _____________________                               _______________________________________
+        |  interface p{       |                             |  interface p{                         |
+        |       int a = 5;    |                             |     public static final int a = 5;    |
+        |       void print(); | ------> Compiler ------->   |     public abstract void print();     |
+        |   }                 |                             |   }                                   |
+        |_____________________|                             |_______________________________________|
+
+
+****** Relationship Between Classes & Interface *******
+
+- class extends another class...
+- interface extends another interface...
+- class implements interface...
+
+
+     _________           ___________                 ___________
+    |  class  |         | interface |               | interface |
+    |_________|         |___________|               |___________|
+         ^                     ^                         ^
+         |extends              | impliments              | extends
+         |                     |                         |
+      _______            __________                   ____________
+     | class |          | class    |                 |  interface |
+     |_______|          |__________|                 |____________|
+
+
+****** Multiple Inheritance in java by interface *******
+
+
+- If a class impliments multiple interfaces, or a interface extends multiple interface then it called
+  multiple inheritance in java.
+
+
+
+       ___________        ___________                 ___________       ___________
+      | interface |      | interface |               | interface |     | interface |
+      |___________|      |___________|               |___________|     |___________|
+           \                /                            \                 /
+            \  impliments  /                              \    extends    /
+             \            /                                \             /
+              \ _________/                                  \___________/
+               |  class  |                                  | interface |
+               |_________|                                  |___________|
+
+
+
+
+  ex: -
+        1) class impliments multiple inheritance
+
+                interface Printable{
+                    void print();
+                }
+                interface Showable{
+                    void show();
+                }
+                class A7 implements Printable,Showable{
+                    public void print(){
+                        System.out.println("Hello");
+                        }
+                    public void show(){
+                        System.out.println("Welcome");
+                        }
+
+                public static void main(String args[]){
+                    A7 obj = new A7();
+                    obj.print();
+                    obj.show();
+                    }
+                }
+
+                output : Hello
+                         Welcome
+
+
+        2) interface extends multiple interface:
+
+                interface Printable{
+                    void print();
+                }
+                interface Showable{
+                    void show();
+                }
+
+                interface Display extends Printable, Showable{
+                    void display();
+                }
+
+                // if any class impliments that display interface then that class must have implimentation of the
+                   Display, Showable, Printable interfaces...
+
+
+
+ *********** Multiple inheritance is not supported through class in java, *************************
+                   but it is possible by an interface, why?
+
+ - Multiple interitance is not supported in case of class...
+   because of ambiguity ( compiler confuses which class method pick ).
+
+ - In interface, there is no ambiguity thats why interface supports multiple inheritance....
+    because its implimentation is provided by the implimentation class.
